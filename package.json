@@ -1,0 +1,44 @@
+{
+  "name": "express-starter",
+  "version": "0.1.0",
+  "description": "Express rest api boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "watch": "nodemon index.js --trace-sync-io",
+    "debug": "set DEBUG=* && nodemon index.js --trace-sync-io",
+    "test": "mocha --require tests/support/env  --reporter spec --check-leaks --exit --colors tests/",
+    "lint": "eslint . --format table || true",
+    "lint:report": "eslint . --format html --output-file ./storage/reports/eslint.html",
+    "db:migrate": "knex migrate:latest --knexfile config/database.js",
+    "db:seed": "knex seed:run --knexfile config/database.js",
+    "db:reset": "knex migrate:rollback --knexfile config/database.js",
+    "db:refresh": "npm run db:reset && npm run db:migrate && npm run db:seed",
+    "make:migration": "knex migrate:make --knexfile config/database.js",
+    "make:seed": "knex seed:make --knexfile config/database.js"
+  },
+  "author": "Bouhnosaure",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "mocha": "^5.1.1",
+    "nodemon": "^1.17.3",
+    "supertest": "^3.0.0"
+  },
+  "dependencies": {
+    "@slynova/fence": "^1.0.0-beta.2",
+    "app-root-path": "^2.0.1",
+    "bcrypt": "^2.0.1",
+    "body-parser": "^1.18.2",
+    "errorhandler": "^1.5.0",
+    "express": "^4.16.3",
+    "express-async-errors": "^2.1.2",
+    "helmet": "^3.12.0",
+    "knex": "^0.14.6",
+    "morgan": "^1.9.0",
+    "mysql": "^2.15.0",
+    "objection": "^1.1.7",
+    "winston": "^2.4.2"
+  }
+}
