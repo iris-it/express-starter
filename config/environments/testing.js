@@ -8,6 +8,15 @@ module.exports = {
 
     port: 1337,
 
+    jwt: {
+        secret: 'secret_key',
+        config: {
+            expiresIn: '1h',
+            issuer: app_name,
+            subject: 'user'
+        }
+    },
+
     winston: {
         file: {
             level: 'debug',

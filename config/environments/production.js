@@ -1,12 +1,24 @@
 let appRoot = require('app-root-path');
 
+let fs = require('fs');
+
 let app_name = 'express_starter';
 
 module.exports = {
 
     name: app_name,
 
-    port: 1337,
+    port: process.env.APP_PORT || 1337,
+
+    jwt: {
+        secret: fs.readFileSync(`${appRoot}/storage/keys/jwt/private.key`),
+        config: {
+            algorithm: 'RS256',
+            expiresIn: '1h',
+            issuer: app_name,
+            subject: 'user'
+        }
+    },
 
     winston: {
         file: {
@@ -30,11 +42,11 @@ module.exports = {
     knex: {
         client: 'mysql',
         connection: {
-            host: 'localhost',
-            port: 3306,
-            database: `${app_name}_production`,
-            user: 'root',
-            password: ''
+            host: process.env.DB_HOST || 'localhost',
+            port: process.env.DB_PORT || 3306,
+            database: process.env.DB_NAME || `${app_name}_production`,
+            user: process.env.DB_USER || 'root',
+            password: process.env.DB_PASSWORD || ''
         },
         migrations: {
             tableName: 'migrations',

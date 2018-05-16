@@ -15,11 +15,12 @@ if (process.env.NODE_ENV !== 'production') {
 
     app.use(async (err, req, res, next) => {
 
-        // winstons
+        // winston
         logger.error(err);
 
         // print the error as response
         res.status(500);
+
         res.json({
             message: err.message,
             error: err,

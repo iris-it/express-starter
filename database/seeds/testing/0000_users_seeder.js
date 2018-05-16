@@ -1,4 +1,4 @@
-let bcrypt = require('bcrypt');
+const hashHelper = require('../../../src/helpers/hash');
 
 exports.seed = function (knex) {
 
@@ -13,7 +13,7 @@ exports.seed = function (knex) {
                 lastname: 'one',
                 email: 'admin_one@mail.fr',
                 phone: '0102030405',
-                password: bcrypt.hashSync('123123', 10)
+                password: hashHelper.hash_password('123123')
             },
             {
                 id: 2,
@@ -21,7 +21,7 @@ exports.seed = function (knex) {
                 lastname: 'two',
                 email: 'manager_two@mail.fr',
                 phone: '0102030405',
-                password: bcrypt.hashSync('123123', 10)
+                password: hashHelper.hash_password('123123')
             },
             {
                 id: 3,
@@ -29,7 +29,7 @@ exports.seed = function (knex) {
                 lastname: 'three',
                 email: 'user_three@mail.fr',
                 phone: '0102030405',
-                password: bcrypt.hashSync('123123', 10)
+                password: hashHelper.hash_password('123123')
             }
         ]);
 

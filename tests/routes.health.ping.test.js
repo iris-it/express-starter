@@ -4,7 +4,7 @@ const expect = require('chai').expect;
 
 const request = require('supertest');
 
-describe('Test if the app is healthy', () => {
+describe('Health Ping', () => {
 
     it('should respond pong', async () => {
 

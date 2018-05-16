@@ -28,13 +28,20 @@ app.use(bodyParser.json());
  * Custom Middleware
  */
 
-app.use(require('./middlewares/TestMiddleware'));
+app.use(require('./middlewares/ResponseHandler'));
 
 /*
  * Routes
  */
 
 app.use('/', require('./routes'));
+
+
+/*
+ * Error Handler
+ */
+app.use(require('./middlewares/ErrorHandler'));
+
 
 /*
  * Can be mounted anywhere

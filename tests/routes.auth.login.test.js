@@ -6,7 +6,7 @@ const request = require('supertest');
 
 const {knex} = require('../src/models/datasources/objection');
 
-describe('Auth Endpoint Integration Tests', () => {
+describe('Auth Login', () => {
 
     before(async () => {
 
@@ -28,6 +28,8 @@ describe('Auth Endpoint Integration Tests', () => {
         let data = response.body;
 
         expect(response.statusCode).to.equal(200);
+
+        // TODO I EXPECT A TOKEN ( object )
 
         expect(data.status).to.be.true;
 

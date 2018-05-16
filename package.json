@@ -24,6 +24,7 @@
     "eslint": "^4.19.1",
     "mocha": "^5.1.1",
     "nodemon": "^1.17.3",
+    "sinon": "^5.0.7",
     "supertest": "^3.0.0"
   },
   "dependencies": {
@@ -33,11 +34,16 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "express-async-errors": "^2.1.2",
+    "express-jwt": "^5.3.1",
     "helmet": "^3.12.0",
+    "jsonwebtoken": "^8.2.1",
     "knex": "^0.14.6",
+    "lodash": "^4.17.10",
     "morgan": "^1.9.0",
     "mysql": "^2.15.0",
     "objection": "^1.1.7",
+    "objection-visibility": "^0.2.0",
+    "uuid": "^3.2.1",
     "winston": "^2.4.2"
   }
 }

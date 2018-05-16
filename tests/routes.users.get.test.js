@@ -6,25 +6,13 @@ const request = require('supertest');
 
 const {knex} = require('../src/models/datasources/objection');
 
-describe('User Endpoint Integration Tests', () => {
+describe('User Get', () => {
 
     before(async () => {
 
         await knex.migrate.rollback();
         await knex.migrate.latest();
         await knex.seed.run();
-
-    });
-
-    it('should return 3 users', async () => {
-
-        const response = await request(app).get('/users');
-
-        let data = response.body;
-
-        expect(data).to.be.an('array');
-
-        expect(data).to.have.lengthOf(3);
 
     });
 
@@ -39,6 +27,5 @@ describe('User Endpoint Integration Tests', () => {
         expect(data.email).to.have.string('admin_one@mail.fr');
 
     });
-
 
 });
