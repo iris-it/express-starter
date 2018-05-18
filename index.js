@@ -7,37 +7,6 @@ const logger = require('./config/logger');
 
 let app = require('./src/app');
 
-/*
- * Error Middleware
- */
-
-if (process.env.NODE_ENV !== 'production') {
-
-    app.use(async (err, req, res, next) => {
-
-        // winston
-        logger.error(err);
-
-        // print the error as response
-        res.status(500);
-
-        res.json({
-            message: err.message,
-            error: err,
-        });
-
-        next(err);
-
-    });
-
-} else {
-
-    app.use((err, req, res, next) => {
-        logger.error(err);
-        next(err);
-    });
-
-}
 
 /*
  * Start Server

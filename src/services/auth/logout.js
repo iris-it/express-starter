@@ -16,7 +16,6 @@ module.exports = (token) => {
 
     }
 
-
     // return ok or the status of the blacklist
 
     return false;

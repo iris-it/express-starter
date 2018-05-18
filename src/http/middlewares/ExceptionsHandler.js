@@ -1,5 +1,3 @@
-'use strict';
-
 const errors = {
 
     DEFAULT_ERROR_CODE: {
@@ -56,3 +54,32 @@ module.exports = function (err, req, res, next) {
     //next(err);
 };
 
+// module.exports = function (app) {
+//
+//     // Development handler provides stacktraces
+//
+//     if (process.env.NODE_ENV !== 'production') {
+//
+//         app.use(function (err, req, res, next) {
+//             res.status(err.status || 500);
+//             res.send({
+//                 message: err.message,
+//                 error: err
+//             });
+//         });
+//
+//     } else {
+//
+//         // Production handler only provides the error message
+//         app.use(function (err, req, res, next) {
+//             res.status(err.status || 500);
+//             res.send({
+//                 message: err.message,
+//                 error: {}
+//             });
+//         });
+//
+//     }
+//
+//
+// };

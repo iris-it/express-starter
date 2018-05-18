@@ -1,15 +1,20 @@
-let express = require('express');
-let router = express.Router();
-let express_jwt = require('express-jwt');
-let config = require('../config')();
+const express = require('express');
+const router = express.Router();
+
+const express_jwt = require('express-jwt');
+const {checkSchema} = require('express-validator/check');
+
+const config = require('../config')();
+
 
 /*
- * Controllers imports
+ * Validators & Controllers imports
  */
+const {auth_login_validator} = require('./http/validators');
 
-let HealthController = require('./controllers/HealthController');
-let AuthController = require('./controllers/AuthController');
-// let UsersController = require('./controllers/UsersController');
+const HealthController = require('./http/controllers/health');
+const AuthController = require('./http/controllers/auth');
+// const UsersController = require('./http/controllers/users');
 
 /*
  * Routes Middleware
@@ -29,8 +34,9 @@ router.all('/ping', HealthController.ping);
 /*
  * Auth
  */
-router.post('/login', AuthController.login);
+router.post('/login', checkSchema(auth_login_validator), AuthController.login);
 router.post('/refresh', AuthController.refresh);
+router.post('/logout', AuthController.logout);
 
 /*
  * Users
